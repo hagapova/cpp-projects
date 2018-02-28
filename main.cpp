@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+// задача - создать класс Figure и унаследовать от него два класса Circle и Square, написав функцию Area для каждого из них;
+
 class Figure {
 public:
     virtual double Area() const = 0;
