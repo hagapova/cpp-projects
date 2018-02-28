@@ -1,3 +1,0 @@
-# cpp-projects
-
-hello world
