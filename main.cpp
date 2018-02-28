@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cmath>
+
+class Complex {
+private:
+    double x, y;
+
+public:
+    Complex(double a = 0.0, double b = 0.0):
+            x(a), y(b) {
+    }
+
+    double Re() {
+        return x;
+    }
+
+    double Im() {
+        return y;
+    }
+};
+Complex operator+(Complex z1, Complex z2) {
+    return {z1.Re() + z2.Re(), z1.Im() + z2.Im()};
+}
+Complex operator-(Complex z1, Complex z2) {
+    return {z1.Re() - z2.Re(), z1.Im() - z2.Im()};
+}
+Complex operator*(Complex z1, Complex z2) {
+    return {z1.Re()*z2.Re() - z2.Im()*z1.Im(), z1.Im()*z2.Re() + z2.Im()*z1.Re()};
+}
+Complex operator/(Complex z1, Complex z2) {
+    return {(z1.Re()*z2.Re() + z2.Im()*z1.Im())/((z2.Re())*(z2.Re()) + (z2.Im())*(z2.Im())),
+            (z2.Re()*z1.Im() - z1.Re()*z2.Im())/((z2.Re())*(z2.Re()) + (z2.Im())*(z2.Im()))};
+}
+Complex operator+(Complex z1) {
+    return z1;
+}
+Complex operator-(Complex z1) {
+    Complex minus_z1 = {-z1.Re(), -z1.Im()};
+    return minus_z1;
+}
+bool operator==(Complex z1, Complex z2) {
+    return (z1.Re() == z2.Re() && z2.Im() == z1.Im());
+}
+bool operator!=(Complex z1, Complex z2) {
+    return (z1.Re() != z2.Re() || z2.Im() != z1.Im());
+}
+
+double abs(Complex z1) {
+    double absolute = sqrt((z1.Re())*(z1.Re()) + (z1.Im())*(z1.Im()));
+    return absolute;
+}
+
+
+
+
+
+
+int main() {
+    Complex z(2, -3);
+    Complex i(3, 4);
+    Complex u = -i;
+    std::cout << u.Re() << ' ' << u.Im() << 'i';
+}
