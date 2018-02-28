@@ -24,9 +24,6 @@ public:
 
     UniquePtr& operator =(UniquePtr&& other) {
         std::swap(theobj, other.theobj);
-        /* delete theobj;
-        theobj = other.theobj;
-        other.theobj = nullptr; */
         return * this;
     }
 
